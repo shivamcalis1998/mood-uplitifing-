@@ -1,13 +1,13 @@
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Volume2, VolumeX } from 'lucide-react';
-import MoodThermometer from './MoodThermometer';
-import MoodButton from './MoodButton';
-import AnimationOverlay from './animations/AnimationOverlay';
-import VictoryScreen from './VictoryScreen';
-import { moodButtons } from '../data/moodButtons';
-import { MoodButton as MoodButtonType } from '../types';
-import { audioManager } from '../utils/audio';
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { Volume2, VolumeX } from "lucide-react";
+import MoodThermometer from "./MoodThermometer";
+import MoodButton from "./MoodButton";
+import AnimationOverlay from "./animations/AnimationOverlay";
+import VictoryScreen from "./VictoryScreen";
+import { moodButtons } from "../data/moodButtons";
+import { MoodButton as MoodButtonType } from "../types";
+import { audioManager } from "../utils/audio";
 
 interface QuestMainProps {
   onRestart: () => void;
@@ -15,10 +15,13 @@ interface QuestMainProps {
 
 export default function QuestMain({ onRestart }: QuestMainProps) {
   const [progress, setProgress] = useState(0);
-  const [completedButtons, setCompletedButtons] = useState<Set<string>>(new Set());
+  const [completedButtons, setCompletedButtons] = useState<Set<string>>(
+    new Set()
+  );
   const [currentAnimation, setCurrentAnimation] = useState<{
     type: string;
     message: string;
+    buttonId: string;
   } | null>(null);
   const [audioEnabled, setAudioEnabled] = useState(true);
   const [showVictory, setShowVictory] = useState(false);
@@ -31,6 +34,7 @@ export default function QuestMain({ onRestart }: QuestMainProps) {
     setCurrentAnimation({
       type: button.animationType,
       message: button.message,
+      buttonId: button.id,
     });
 
     setTimeout(() => {
@@ -43,7 +47,23 @@ export default function QuestMain({ onRestart }: QuestMainProps) {
         audioManager.playCelebration();
         setTimeout(() => setShowVictory(true), 1000);
       }
-    }, 3000);
+    }, 8000);
+  };
+
+  const handleScreenClick = () => {
+    if (currentAnimation) {
+      const newProgress = progress + 10;
+      setProgress(newProgress);
+      setCompletedButtons(
+        new Set([...completedButtons, currentAnimation.buttonId])
+      );
+      setCurrentAnimation(null);
+
+      if (newProgress === 100) {
+        audioManager.playCelebration();
+        setTimeout(() => setShowVictory(true), 1000);
+      }
+    }
   };
 
   const handleReplay = () => {
@@ -63,7 +83,10 @@ export default function QuestMain({ onRestart }: QuestMainProps) {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-400 via-purple-400 to-pink-400 py-8 px-4 relative overflow-hidden">
+    <div
+      className="min-h-screen bg-gradient-to-br from-blue-400 via-purple-400 to-pink-400 py-8 px-4 relative overflow-hidden"
+      onClick={handleScreenClick}
+    >
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {[...Array(30)].map((_, i) => (
           <motion.div
@@ -79,7 +102,7 @@ export default function QuestMain({ onRestart }: QuestMainProps) {
             transition={{
               duration: Math.random() * 10 + 10,
               repeat: Infinity,
-              ease: 'linear',
+              ease: "linear",
               delay: Math.random() * 5,
             }}
           />
@@ -91,7 +114,7 @@ export default function QuestMain({ onRestart }: QuestMainProps) {
         whileTap={{ scale: 0.95 }}
         onClick={toggleAudio}
         className="fixed top-4 right-4 z-40 bg-white/30 backdrop-blur-md p-4 rounded-full shadow-lg border-2 border-white/40"
-        aria-label={audioEnabled ? 'Mute sounds' : 'Enable sounds'}
+        aria-label={audioEnabled ? "Mute sounds" : "Enable sounds"}
       >
         {audioEnabled ? (
           <Volume2 className="text-white" size={24} />

@@ -6,7 +6,7 @@ export const moodButtons: MoodButton[] = [
     title: "Deep Breaths? Nah, Giggle Inhale",
     emoji: "💨",
     message:
-      "Sarcasm level: sohc k dekho ek software enginner baniye k under and ek athelete and jo raat ko batman bnkar niklta hai usse judi ho , m bhi hnsta hi rhta hu , ye to fir bhi chhoti chhoti chije hai. 😏",
+      "Sarcasm level: soch k dekho ek software enginner baniye k under and ek athelete and jo raat ko batman bnkar niklta hai usse patni ho , m bhi hnsta hi rhta hu , ye to fir bhi chhoti chhoti chije hai. 😏",
     animationType: "breathe",
     locked: false,
   },
@@ -14,7 +14,8 @@ export const moodButtons: MoodButton[] = [
     id: "hug",
     title: "Hug Yourself (I Can't Right Now)",
     emoji: "🤗",
-    message: "Apna hi gale laga lo, main to abhi lga nhi skta unfortunatly 💕",
+    message:
+      "apne aap ko hi gale laga lo, main to abhi lga nhi skta unfortunatly 💕",
     animationType: "hug",
     locked: false,
   },
@@ -32,7 +33,7 @@ export const moodButtons: MoodButton[] = [
     title: "Gratitude Glitch",
     emoji: "🙏",
     message:
-      "aapki mehnat ko hmesha salaam yaar , btw itna sb kuchh kar kese lete ho ",
+      "aapki mehnat hamesha proud hota hai mujhe, btw itna sb kuchh kar kese lete ho ",
     animationType: "gratitude",
     locked: false,
   },
@@ -40,7 +41,7 @@ export const moodButtons: MoodButton[] = [
     id: "eyeroll",
     title: "Eye Roll Reset",
     emoji: "🙄",
-    message: "Thak gayi? ek kiss dedo mjhe sanse lota dunga ✨",
+    message: "Thak gayi? ek kiss dedo mujhe, sanse lota dunga ✨",
     animationType: "eyeroll",
     locked: false,
   },
@@ -67,7 +68,7 @@ export const moodButtons: MoodButton[] = [
     title: "Sweet Whisper",
     emoji: "🌸",
     message:
-      "aapke sath rh kar jana ki licking is the best policy for happiness 👅,,,but is baar rh gya ,,,shit shit",
+      "aapke sath rh kar jana ki licking👅 is the best policy for happiness😁 ,,,but is baar rh gya ,,,shit shit",
     animationType: "whisper",
     locked: false,
   },
