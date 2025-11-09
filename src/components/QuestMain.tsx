@@ -27,7 +27,8 @@ export default function QuestMain({ onRestart }: QuestMainProps) {
   const [showVictory, setShowVictory] = useState(false);
 
   const handleButtonClick = (button: MoodButtonType) => {
-    if (completedButtons.has(button.id)) return;
+    // Allow re-opening if animation is not currently showing
+    if (currentAnimation?.buttonId === button.id) return;
 
     audioManager.playDing();
 
@@ -38,28 +39,33 @@ export default function QuestMain({ onRestart }: QuestMainProps) {
     });
 
     setTimeout(() => {
-      const newProgress = progress + 10;
-      setProgress(newProgress);
-      setCompletedButtons(new Set([...completedButtons, button.id]));
-      setCurrentAnimation(null);
+      if (currentAnimation?.buttonId === button.id) {
+        const newProgress = Math.min(progress + 10, 100);
+        const newCompleted = new Set([...completedButtons, button.id]);
+        setProgress(newProgress);
+        setCompletedButtons(newCompleted);
+        setCurrentAnimation(null);
 
-      if (newProgress === 100) {
-        audioManager.playCelebration();
-        setTimeout(() => setShowVictory(true), 1000);
+        if (newProgress === 100 && newCompleted.size === 10) {
+          audioManager.playCelebration();
+          setTimeout(() => setShowVictory(true), 1000);
+        }
       }
     }, 8000);
   };
 
   const handleScreenClick = () => {
     if (currentAnimation) {
-      const newProgress = progress + 10;
+      const newProgress = Math.min(progress + 10, 100);
+      const newCompleted = new Set([
+        ...completedButtons,
+        currentAnimation.buttonId,
+      ]);
       setProgress(newProgress);
-      setCompletedButtons(
-        new Set([...completedButtons, currentAnimation.buttonId])
-      );
+      setCompletedButtons(newCompleted);
       setCurrentAnimation(null);
 
-      if (newProgress === 100) {
+      if (newProgress === 100 && newCompleted.size === 10) {
         audioManager.playCelebration();
         setTimeout(() => setShowVictory(true), 1000);
       }
