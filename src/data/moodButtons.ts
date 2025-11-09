@@ -1,0 +1,92 @@
+import { MoodButton } from '../types';
+
+export const moodButtons: MoodButton[] = [
+  {
+    id: 'breathe',
+    title: 'Deep Breaths? Nah, Giggle Inhale',
+    emoji: '💨',
+    message: 'Sarcasm level: Breathing is overrated, but try it—inhale peace, exhale your ex-boss bad vibes. 😏',
+    animationType: 'breathe',
+    locked: false,
+  },
+  {
+    id: 'hug',
+    title: "Hug Yourself (I Can't Right Now)",
+    emoji: '🤗',
+    message: 'Apna hi gale laga lo, main aa raha hoon jaldi se. 💕',
+    animationType: 'hug',
+    locked: false,
+  },
+  {
+    id: 'dance',
+    title: 'Silly Dance Break',
+    emoji: '🕺',
+    message: "Dance like no one's judging—except me, and I'm impressed already. 🕺",
+    animationType: 'dance',
+    locked: false,
+  },
+  {
+    id: 'gratitude',
+    title: 'Gratitude Glitch',
+    emoji: '🙏',
+    message: 'Grateful? Pfft, as if Mondays need more thanks. But hey, try it.',
+    animationType: 'gratitude',
+    locked: false,
+  },
+  {
+    id: 'eyeroll',
+    title: 'Eye Roll Reset',
+    emoji: '🙄',
+    message: 'Thak gayi? Bas ek pal, phir muskurahat wapas. ✨',
+    animationType: 'eyeroll',
+    locked: false,
+  },
+  {
+    id: 'meme',
+    title: 'Meme Therapy',
+    emoji: '😂',
+    message: "Memes: Because therapy is expensive, but laughs are free(ish).",
+    animationType: 'meme',
+    locked: false,
+  },
+  {
+    id: 'stretch',
+    title: 'Stretch & Snark',
+    emoji: '🤸',
+    message: "Stretch like you mean it—or like you're avoiding adulting. Your choice.",
+    animationType: 'stretch',
+    locked: false,
+  },
+  {
+    id: 'whisper',
+    title: 'Sweet Whisper',
+    emoji: '🌸',
+    message: 'Teri khushi meri jeet hai, par aaj tu jeet le.',
+    animationType: 'whisper',
+    locked: false,
+  },
+  {
+    id: 'nap',
+    title: 'Power Nap Tease',
+    emoji: '😴',
+    message: 'Nap? More like plot world domination. Wake up ruling. 😴➡️👑',
+    animationType: 'nap',
+    locked: false,
+  },
+  {
+    id: 'victory',
+    title: 'Victory Vibes',
+    emoji: '🎉',
+    message: 'Bas itna hi, ab smile on lock. Tu toh already superstar hai.',
+    animationType: 'victory',
+    locked: false,
+  },
+];
+
+export const gratitudeItems = [
+  'Coffee exists. WiFi too. And you.',
+  'Cozy blankets. Surprise snacks. Your smile.',
+  'Random compliments. Good hair days. This moment.',
+  'Playlist hits. Weekend plans. Inner peace (kinda).',
+  'Midnight talks. Morning sunshine. Your existence.',
+];
